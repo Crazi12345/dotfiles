@@ -1,0 +1,206 @@
+{
+  "main": {
+    "id": "ee33a132310ec490",
+    "type": "split",
+    "children": [
+      {
+        "id": "5f6d4e65df681254",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "87219da8a3a44b3d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "teester.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "247d642e07c5263f",
+    "type": "split",
+    "children": [
+      {
+        "id": "f3bc33d5a3057818",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2ae0c3cc04a7614e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "b1687aba06ddf08a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "1870284ba5b8e2f3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "af966edab38335f2",
+    "type": "split",
+    "children": [
+      {
+        "id": "c2750a5f5eb1e967",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "847f35d21801f872",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "teester.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "224c142c098060f9",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "teester.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "4e3f0be1952c5fe8",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "e3d33059be660c48",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "teester.md"
+              }
+            }
+          },
+          {
+            "id": "ab291aaf5c26acf0",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false
+    }
+  },
+  "active": "87219da8a3a44b3d",
+  "lastOpenFiles": [
+    "testerWIhtVim.md",
+    "teester.md",
+    "Rust.md",
+    "2023-07-27.md",
+    "Embedded Programming.md",
+    "Project Ideas.md",
+    "Active Domain Controller.md",
+    "Bare Metal Arduino Programming.md",
+    "Pasted image 20230715230031.png",
+    "Artificial Intelligence.md",
+    "Trines Laptop ideer.md",
+    "Things to know when freshly install linux.md",
+    "Excalidraw/Drawing 2023-07-09 17.51.17.excalidraw.md",
+    "Excalidraw/Drawing 2023-07-14 21.01.26.excalidraw.md",
+    "Untitled.canvas",
+    "MOC/Media.md",
+    "Artificial intelligence MAP.canvas",
+    "MOC/Programming.md",
+    "Yew.md",
+    "Hashing.md",
+    "A(star).md",
+    "2023-04-20.md",
+    "LibGDX.md",
+    "Q-learning.md",
+    "01-Daily Notes/Cassidy's Pregnancy problems.md",
+    "Trigonomic Functions and identities.md",
+    "Testing Artificial intelligence.md",
+    "Service Loader.md",
+    "Uncertainty.md",
+    "Excalidraw",
+    "Images/Pasted image 20230120170654.png",
+    "Images/MVC Overview example.png",
+    "Images/Q-Table-example.png",
+    "Images/Pasted image 20230213125521.png",
+    "Images/Pasted image 20230624093626.png",
+    "Images/Routing in laravel.png",
+    "Images/Abstract classes and interface in php.png",
+    "Images/Pasted image 20230628090140.png",
+    "Images/Pasted image 20230210193038.png",
+    "Book & article Notes",
+    "01-Daily Notes",
+    "Images",
+    "MOC",
+    "PDF"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "collapse-filter": false,
+  "search": "-path:\"01-Daily Notes\" -path:\"Book & article Notes\"",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": true,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "tag:#MOC",
+      "color": {
+        "a": 1,
+        "rgb": 15400960
+      }
+    },
+    {
+      "query": "tag:#Math",
+      "color": {
+        "a": 1,
+        "rgb": 1648885
+      }
+    },
+    {
+      "query": "tag:#programming",
+      "color": {
+        "a": 1,
+        "rgb": 5431378
+      }
+    },
+    {
+      "query": "tag:#AI",
+      "color": {
+        "a": 1,
+        "rgb": 16755200
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": false,
+  "textFadeMultiplier": -0.9,
+  "nodeSizeMultiplier": 0.891145833333333,
+  "lineSizeMultiplier": 0.457291666666667,
+  "collapse-forces": false,
+  "centerStrength": 0.661458333333333,
+  "repelStrength": 12.2916666666667,
+  "linkStrength": 1,
+  "linkDistance": 99,
+  "scale": 0.6666666666666659,
+  "close": false
+}
