@@ -13,8 +13,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     spec = "atlas.lazy",
-    change_detection = { notify = false }
+    change_detection = { notify = false },
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
+
 })
+vim.cmd.colorscheme "catppuccin"
 --[[
 require("lazy").setup({
   use("~/personal/harpoon")
