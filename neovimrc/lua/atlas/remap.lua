@@ -39,6 +39,8 @@ vim.keymap.set(
 )
 
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
+vim.keymap.set("n", "<leader>gl", "<cmd>CellularAutomaton game_of_life<CR>");
+vim.keymap.set("n", "<leader>ms", "<cmd>CellularAutomaton slide<CR>");
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
