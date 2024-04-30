@@ -33,6 +33,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -45,9 +46,9 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec kitty -e tmux a
-bindsym $mod+Return exec kitty sh ~/.config/i3/tmux-on-open.sh
-bindsym $mod+Shift+Return exec kitty tmux new
-bindsym $mod+Shift+s exec xrandr --output eDP --auto --output DVI-I-2-1 --auto --right-of eDP --output DVI-I-3-2 --auto --right-of DVI-I-2-1
+bindsym $mod+Return exec alacritty --command sh ~/.config/i3/tmux-on-open.sh
+bindsym $mod+Shift+Return exec alacritty --command tmux new
+bindsym $mod+Shift+s exec xrandr --output eDP --auto --output DVI-I-2-1 --auto --right-of eDP --output DVI-I-3-2 --auto --right-of DVI-I-2-1 && ~/.config/polybar/launch
 bindsym Print exec maim -s -u | xclip -selection clipboard -t image/png -i
 #bindsym $mod+Return exec i3-sensible-terminal
 default_border pixel 0
@@ -64,6 +65,8 @@ bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 exec --no-startup-id feh --bg-fill ~/.config/i3/.AtlasBackground.png
+exec --no-startup-id sh /home/tired_atlas/.config/polybar/launch
+exec --no-startup-id nohup /home/tired_atlas/Downloads/stayfree.Appimage
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -196,17 +199,3 @@ client.background       #FFFFFF
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-  colors {
-    background #000000
-    statusline #FFFFFF
-    separator  #666666
-
-    focused_workspace  #83CAFA #51A2DA #FFFFFF
-    active_workspace   #3C6EB4 #294172 #FFFFFF
-    inactive_workspace #8C8C8C #4C4C4C #888888
-    urgent_workspace   #EC69A0 #DB3279 #FFFFFF
-    binding_mode       #b691d3 #A07CBC #FFFFFF
-  }
-  status_command i3status
-}
