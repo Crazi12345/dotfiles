@@ -66,7 +66,7 @@ bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '
 
 exec --no-startup-id feh --bg-fill ~/.config/i3/.AtlasBackground.png
 exec --no-startup-id sh /home/tired_atlas/.config/polybar/launch
-exec --no-startup-id nohup /home/tired_atlas/Downloads/stayfree.Appimage
+exec --no-startup-id  /home/tired_atlas/Downloads/stayfree.Appimage &
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
