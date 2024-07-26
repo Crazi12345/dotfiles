@@ -17,7 +17,6 @@ return {
         vim.keymap.set('n', '<leader>PP', builtin.planets, {})
         vim.keymap.set('n', '<leader>DD', builtin.diagnostics, {})
         vim.keymap.set('n', '<leader>QF', builtin.quickfix, {})
-        vim.keymap.set('n', '<leader>IG', builtin.lsp_outgoing_calls, {})
 
         vim.keymap.set('n', '<C-p>', builtin.git_files, {})
         vim.keymap.set('n', '<leader>pws', function()
