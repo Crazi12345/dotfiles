@@ -26,7 +26,6 @@ return {
     keys = {
         { "gf",         "<cmd>ObsidianFollowLink<cr>",                                desc = "Obsidian Follow Link" },
         { "<leader>on", "<cmd>ObsidianNew<cr>",                                       desc = "Obsidian Create File" },
-        { "<leader>On", "<cmd>ObsidianNew<cr>",                                       desc = "Obsidian Create File" },
         { "<leader>ch", "<cmd>ObsidianToggleCheckbox<cr>",                            desc = "Obsidian Toggle Checkbox" },
         { "<leader>o",  "<cmd>Telescope find_files cwd=~/Documents/Main\\ Brain<cr>", desc = "Search Main Brain" },
         { "<leader>O",  "<cmd>Telescope find_files cwd=~/Documents/Work\\ Vault<cr>", desc = "Search Work Vault" },
