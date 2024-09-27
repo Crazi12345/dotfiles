@@ -11,7 +11,6 @@ return {
         config = function()
             vim.g.db_ui_use_nerd_fonts = 1  -- Your DBUI configuration
             vim.g.dbs = {
-                dev = "postgresql://postgres:cde38ik,@localhost:5432/cdr_full?adapter=~/.local/share/nvim/lazy/vim-dadbod/autoload/db/adapter/postgresql.vim"
             }
         end,
     },
