@@ -16,7 +16,6 @@ return {
         vim.keymap.set('n', '<leader>ch', builtin.colorscheme, {})
         vim.keymap.set('n', '<leader>PP', builtin.planets, {})
         vim.keymap.set('n', '<leader>DD', builtin.diagnostics, {})
-        vim.keymap.set('n', '<leader>QF', builtin.quickfix, {})
         vim.keymap.set('n', '<leader>gc', builtin.git_commits, {})
         vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
         vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
