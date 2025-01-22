@@ -1,56 +1,70 @@
-return
-{
-    "seblj/roslyn.nvim",
-    ft = "cs",
-    opts = {
-        -- your configuration comes here; leave empty for default settings
-    },
+return {
+    {
+        'seblj/roslyn.nvim',
+        ft = { 'cs', 'razor' },
+        dependencies = {
+            {
+                -- By loading as a dependencies, we ensure that we are available to set
+                -- the handlers for roslyn
+                'tris203/rzls.nvim',
+                config = function()
+                    ---@diagnostic disable-next-line: missing-fields
+                    require('rzls').setup {}
+                end,
+            },
+        },
+        config = function()
+            require('roslyn').setup {
+                args = {
+                    '--logLevel=Information',
+                    '--extensionLogDirectory=' .. vim.fs.dirname(vim.lsp.get_log_path()),
+                    '--razorSourceGenerator='
+                    .. vim.fs.joinpath(vim.fn.stdpath 'data' --[[@as string]], 'mason', 'packages', 'roslyn', 'libexec', 'Microsoft.CodeAnalysis.Razor.Compiler.dll'),
+                    '--razorDesignTimePath=' .. vim.fs.joinpath(
+                        vim.fn.stdpath 'data' --[[@as string]],
+                        'mason',
+                        'packages',
+                        'rzls',
+                        'libexec',
+                        'Targets',
+                        'Microsoft.NET.Sdk.Razor.DesignTime.targets'
+                    ),
+                },
+                ---@diagnostic disable-next-line: missing-fields
+                config = {
+                    handlers = require 'rzls.roslyn_handlers',
+                    settings = {
+                        ['csharp|inlay_hints'] = {
+                            csharp_enable_inlay_hints_for_implicit_object_creation = true,
+                            csharp_enable_inlay_hints_for_implicit_variable_types = true,
 
-    config = {
-        -- Here you can pass in any options that that you would like to pass to `vim.lsp.start`.
-        -- Use `:h vim.lsp.ClientConfig` to see all possible options.
-        -- The only options that are overwritten and won't have any effect by setting here:
-        --     - `name`
-        --     - `cmd`
-        --     - `root_dir`
+                            csharp_enable_inlay_hints_for_lambda_parameter_types = true,
+                            csharp_enable_inlay_hints_for_types = true,
+                            dotnet_enable_inlay_hints_for_indexer_parameters = true,
+                            dotnet_enable_inlay_hints_for_literal_parameters = true,
+                            dotnet_enable_inlay_hints_for_object_creation_parameters = true,
+                            dotnet_enable_inlay_hints_for_other_parameters = true,
+                            dotnet_enable_inlay_hints_for_parameters = true,
+                            dotnet_suppress_inlay_hints_for_parameters_that_differ_only_by_suffix = true,
+                            dotnet_suppress_inlay_hints_for_parameters_that_match_argument_name = true,
+                            dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent = true,
+                        },
+                        ['csharp|code_lens'] = {
+                            dotnet_enable_references_code_lens = true,
+                        },
+                    },
+                },
+            }
+        end,
+        init = function()
+            -- we add the razor filetypes before the plugin loads
+            vim.filetype.add {
+                extension = {
+                    razor = 'razor',
+                    cshtml = 'razor',
+                },
+            }
+        end,
     },
-
-    --[[
-    -- if you installed `roslyn-ls` by nix, use the following:
-      exe = 'Microsoft.CodeAnalysis.LanguageServer',
-    ]]
-    exe = {
-        "dotnet",
-        vim.fs.joinpath(vim.fn.stdpath("data"), "roslyn", "Microsoft.CodeAnalysis.LanguageServer.dll"),
-    },
-    args = {
-        "--logLevel=Warning", "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path())
-    },
-    --[[
-  -- args can be used to pass additional flags to the language server
-    ]]
-
-    -- NOTE: Set `filewatching` to false if you experience performance problems.
-    -- Defaults to true, since turning it off is a hack.
-    -- If you notice that the server is _super_ slow, it is probably because of file watching
-    -- Neovim becomes super unresponsive on some large codebases, because it schedules the file watching on the event loop.
-    -- This issue goes away by disabling this capability, but roslyn will fallback to its own file watching,
-    -- which can make the server super slow to initialize.
-    -- Setting this option to false will indicate to the server that neovim will do the file watching.
-    -- However, in `hacks.lua` I will also just don't start off any watchers, which seems to make the server
-    -- a lot faster to initialize.
-    filewatching = true,
-
-    -- Optional function that takes an array of solutions as the only argument. Return the solution you
-    -- want to use. If it returns `nil`, then it falls back to guessing the solution like normal
-    -- Example:
-    --
-    -- choose_sln = function(sln)
-    --     return vim.iter(sln):find(function(item)
-    --         if string.match(item, "Foo.sln") then
-    --             return item
-    --         end
-    --     end)
-    -- end
-    choose_sln = nil,
 }
+

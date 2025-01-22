@@ -23,7 +23,12 @@ return {
             cmp_lsp.default_capabilities())
 
         require("fidget").setup({})
-        require("mason").setup()
+        require("mason").setup({
+            registries = {
+                'github:mason-org/mason-registry',
+                'github:crashdummyy/mason-registry',
+            },
+        })
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
@@ -31,7 +36,6 @@ return {
             },
             handlers = {
                 function(server_name) -- default handler (optional)
-
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
@@ -71,7 +75,7 @@ return {
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
                 { name = 'vim-dadbod-completion' },
-                { name = 'luasnip' }, -- For luasnip users.
+                { name = 'luasnip' }, -- For luasnip usrs.
             }, {
                 { name = 'buffer' },
             })
