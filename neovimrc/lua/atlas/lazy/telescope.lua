@@ -21,7 +21,7 @@ return {
         vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
         vim.keymap.set('n', '<leader>mp', builtin.man_pages, {})
 
-         vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+        vim.keymap.set('n', '<C-p>', builtin.git_files, {})
         vim.keymap.set('n', '<leader>pws', function()
             local word = vim.fn.expand("<cword>")
             builtin.grep_string({ search = word })
@@ -31,11 +31,19 @@ return {
             builtin.grep_string({ search = word })
         end)
         vim.keymap.set('n', '<leader>ps', function()
-            builtin.live_grep({  })
+            builtin.live_grep({})
         end)
         vim.keymap.set('n', '<leader>pS', function()
             builtin.grep_string({ search = vim.fn.input("Grep > ") })
         end)
+        vim.keymap.set('n', '<leader>pm', function()
+            builtin.lsp_document_symbols({
+                symbols = {
+                    "Function",
+                    "Method",
+                }
+            })
+        end, { desc = "Find functions and methods (LSP)" })
 
         vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
     end

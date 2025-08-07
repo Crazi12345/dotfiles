@@ -16,11 +16,15 @@ return {
     config = function()
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
-        local capabilities = vim.tbl_deep_extend(
+
+        -- Move capabilities definition outside specific server setup
+        -- and use vim.lsp.protocol.make_client_capabilities directly as the base
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities = vim.tbl_deep_extend(
             "force",
-            {},
-            vim.lsp.protocol.make_client_capabilities(),
-            cmp_lsp.default_capabilities())
+            capabilities,
+            cmp_lsp.default_capabilities()
+        )
 
         require("fidget").setup({})
         require("mason").setup({
@@ -29,22 +33,32 @@ return {
                 'github:crashdummyy/mason-registry',
             },
         })
+
+        -- Use vim.lsp.config.capabilities for global capabilities
+        vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+            vim.lsp.diagnostic.on_publish_diagnostics, {
+                -- You can add diagnostic specific options here if needed,
+                -- but generally, these are handled by vim.diagnostic.config
+            }
+        )
+
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
                 "rust_analyzer",
             },
             handlers = {
-                function(server_name) -- default handler (optional)
+                -- Default handler, now passes capabilities via vim.lsp.configure
+                function(server_name)
                     require("lspconfig")[server_name].setup {
-                        capabilities = capabilities
+                        capabilities = capabilities -- This is correct here
                     }
                 end,
 
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.lua_ls.setup {
-                        capabilities = capabilities,
+                        capabilities = capabilities, -- This is correct here
                         settings = {
                             Lua = {
                                 diagnostics = {
@@ -67,14 +81,14 @@ return {
             },
             mapping = cmp.mapping.preset.insert({
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+                ['<C-k>'] = cmp.mapping.select_next_item(cmp_select),
                 ['<C-y>'] = cmp.mapping.confirm({ select = true }),
                 ['<Cr>'] = cmp.mapping.confirm({ select = true }),
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
-                { name = 'vim-dadbod-completion' },
+                { name = 'vim-dadbod-completion' }, -- Assuming this is a valid source, otherwise remove or replace
                 { name = 'luasnip' }, -- For luasnip usrs.
             }, {
                 { name = 'buffer' },

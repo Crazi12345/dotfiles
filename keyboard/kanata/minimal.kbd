@@ -1,0 +1,52 @@
+;; This configuration file for Kanata remaps the Caps Lock key
+;; and changes the behavior of the physical Alt Gr key.
+;;
+;; Caps Lock:
+;;   - Tapped quickly: functions as Escape.
+;;   - Held down: functions as the Alt Gr modifier.
+;;
+;; Alt Gr Key:
+;;   - Functions as a standard Alt modifier.
+
+(defcfg
+  ;; Ensures that any keys not explicitly defined in this configuration
+  ;; will still pass through to the operating system as normal key presses.
+  process-unmapped-keys yes
+)
+
+(defsrc
+  ;; Defines the physical source keys that Kanata will intercept.
+  ;; 'caps' is for Caps Lock.
+  ;; 'ralt' typically represents the physical Alt Gr key on many systems/layouts.
+  caps
+  ralt
+)
+
+(defvar
+  ;; Defines a variable for the tap time in milliseconds for Caps Lock.
+  caps-tap-time 150
+
+  ;; Defines a variable for the hold time in milliseconds for Caps Lock.
+  caps-hold-time 200
+)
+
+(defalias
+  ;; Creates an alias named 'caps-remap' for the Caps Lock key's behavior.
+  ;; 'tap-hold' makes it a dual-purpose key:
+  ;; - Tap (within $caps-tap-time): produces 'esc'.
+  ;; - Hold (longer than $caps-hold-time): produces 'ralt' (Alt Gr modifier).
+  caps-remap (tap-hold $caps-tap-time $caps-hold-time esc ralt)
+)
+
+(deflayer base
+  ;; Defines the 'base' layer of the keyboard.
+  ;; Keys are mapped in the order they appear in 'defsrc'.
+
+  ;; The 'caps' key (first in defsrc) is mapped to our 'caps-remap' alias.
+  @caps-remap
+
+  ;; The 'ralt' key (second in defsrc, representing the physical Alt Gr key)
+  ;; is now mapped to 'lalt' (Left Alt). This makes your physical Alt Gr key
+  ;; behave as a regular Alt key.
+  lalt
+)
