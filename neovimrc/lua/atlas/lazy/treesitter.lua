@@ -1,11 +1,12 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    bracnch = "main",
     build = ":TSUpdate",
     config = function()
-        local configs = require("nvim-treesitter.configs")
+        local configs = require("nvim-treesitter")
 
         configs.setup({
-            ensure_installed = { "c", "c_sharp", "lua", "vim", "vimdoc", "query" },
+            ensure_installed = { "c", "c_sharp", "lua", "vim", "vimdoc", "query", "python" },
             sync_install = false,
             auto_install = true,
             highlight = { enable = true },
