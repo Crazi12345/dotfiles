@@ -1,43 +1,40 @@
 return {
-    "epwalsh/obsidian.nvim",
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope.nvim",
-        "nvim-treesitter/nvim-treesitter"
-    },
-    opts = {
-        -- Your existing Obsidian configuration options ... (keep them as they are)
-        workspaces = {
-            { name = "Main Brain", path = vim.fn.expand("~/Documents/Main Brain") },
-            { name = "Work",       path = vim.fn.expand("~/Documents/Work Vault") },
-        },
-        mappings = {
-            -- ... (your other custom mappings)
-        },
-        ui = {
-            enable = true,
-            conceal_preview = false,
-        },
-    },
-    cmd = {
-        "ObsidianNew", "ObsidianSearch", "ObsidianQuickSwitch", "ObsidianBacklinks", "ObsidianTemplate",
-        "ObsidianFollowLink", "ObsidianToggleCheckbox"
-    },
+    "obsidian-nvim/obsidian.nvim",
+    version = "*",
+    ft = "*",
+
     keys = {
-        { "gf",         "<cmd>ObsidianFollowLink<cr>",                                desc = "Obsidian Follow Link" },
-        { "<leader>on", "<cmd>ObsidianNew<cr>",                                       desc = "Obsidian Create File" },
-        { "<leader>ch", "<cmd>ObsidianToggleCheckbox<cr>",                            desc = "Obsidian Toggle Checkbox" },
-        { "<leader>o",  "<cmd>Telescope find_files cwd=~/Documents/Main\\ Brain<cr>", desc = "Search Main Brain" },
-        { "<leader>O",  "<cmd>Telescope find_files cwd=~/Documents/Work\\ Vault<cr>", desc = "Search Work Vault" },
-        { "<leader>os", "<cmd>Telescope live_grep cwd=~/Documents/Main\\ Brain<cr>",  desc = "Search Main Brain" },
-        { "<leader>Os", "<cmd>Telescope live_grep cwd=~/Documents/Work\\ Vault<cr>",  desc = "Search Work Vault" },
+      -- Existing mappings
+      { "<leader>oo", "<cmd>Obsidian quick_switch<cr>", desc = "Quick Switch" },
+      { "<leader>os", "<cmd>Obsidian search<cr>", desc = "Search Text" },
+      { "<leader>on", "<cmd>Obsidian new<cr>", desc = "New Note" },
+      { "<leader>ot", "<cmd>Obsidian today<cr>", desc = "Today's Note" },
+      { "<leader>ow", "<cmd>Obsidian workspace<cr>", desc = "Select Workspace" },
+      -- Vault Switching
+      { "<leader>oW", "<cmd>Obsidian workspace work<cr>", desc = "Switch to Work" },
+      { "<leader>oS", "<cmd>Obsidian workspace school<cr>", desc = "Switch to School" },
+      { "<leader>oP", "<cmd>Obsidian workspace personal<cr>", desc = "Switch to Personal" },
+      -- Open Todos File
+      {
+        "<leader>od",
+        function()
+            local client = require("obsidian").get_client()
+            vim.cmd("edit " .. tostring(client.dir / "todos.md"))
+        end,
+        desc = "Open Todos"
+      },
+      -- NEW: Create/Toggle Checkbox
+      { "<leader>oc", "<cmd>Obsidian toggle_checkbox<cr>", desc = "Toggle Checkbox" },
     },
-    config = function(_, opts)
-        vim.o.conceallevel = 1
-        require("nvim-treesitter.configs").setup {
-            ensure_installed = "markdown",
-            highlight = { enable = true },
-        }
-        require("obsidian").setup(opts)
-    end,
+
+    ---@module 'obsidian'
+    ---@type obsidian.config
+    opts = {
+        legacy_commands = false,
+        workspaces = {
+            { name = "personal", path = "~/Documents/Main Brain" },
+            { name = "work", path = "~/Documents/Work Vault" },
+            { name = "school", path = "~/Documents/Master Project" },
+        },
+    },
 }
